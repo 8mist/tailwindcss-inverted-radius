@@ -13,5 +13,6 @@
     "outDir": "dist",
     "allowJs": true
   },
-  "include": ["./src/index.ts"]
+  "include": ["./src/index.ts", "./tests/index.ts"],
+  "exclude": ["./tests/index.test.ts"]
 }
