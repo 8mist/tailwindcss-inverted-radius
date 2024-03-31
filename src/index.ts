@@ -23,12 +23,18 @@ const baseStyles = {
   'mask-size': '51% 51%',
 }
 
-const invRad = plugin(
-  function ({ addComponents, theme, e }) {
-    const spacing: Record<string, string> = theme('invRad') ?? {}
+export = plugin(
+  function invRad({ addComponents, theme, e }) {
+    const values: Record<string, string> = theme('invRad') ?? {}
 
-    const generateStyles = ({ prefix, properties }: { prefix?: string; properties: string[] }) => {
-      return Object.entries(spacing).map(([key, value]) => {
+    const generateStyles = ({
+      position,
+      properties,
+    }: {
+      position?: string
+      properties: string[]
+    }) => {
+      return Object.entries(values).map(([key, value]) => {
         const styles: Record<string, string> = properties.reduce(
           (acc: Record<string, string>, prop: string) => {
             acc[`--${rootClassName}-${prop}-size`] = value
@@ -37,7 +43,7 @@ const invRad = plugin(
           {}
         )
         return {
-          [`.${e(`${rootClassName}${prefix ? `-${prefix}` : ''}-${key}`)}`]: styles,
+          [`.${e(`${rootClassName}${position ? `-${position}` : ''}-${key}`)}`]: styles,
         }
       })
     }
@@ -48,14 +54,14 @@ const invRad = plugin(
         [`.${e(rootClassName)}`]: baseStyles,
       },
       ...generateStyles({ properties: ['tl', 'tr', 'bl', 'br'] }),
-      ...generateStyles({ prefix: 't', properties: ['tl', 'tr'] }),
-      ...generateStyles({ prefix: 't-l', properties: ['tl'] }),
-      ...generateStyles({ prefix: 't-r', properties: ['tr'] }),
-      ...generateStyles({ prefix: 'b', properties: ['bl', 'br'] }),
-      ...generateStyles({ prefix: 'b-l', properties: ['bl'] }),
-      ...generateStyles({ prefix: 'b-r', properties: ['br'] }),
-      ...generateStyles({ prefix: 'l', properties: ['tl', 'bl'] }),
-      ...generateStyles({ prefix: 'r', properties: ['tr', 'br'] }),
+      ...generateStyles({ position: 't', properties: ['tl', 'tr'] }),
+      ...generateStyles({ position: 't-l', properties: ['tl'] }),
+      ...generateStyles({ position: 't-r', properties: ['tr'] }),
+      ...generateStyles({ position: 'b', properties: ['bl', 'br'] }),
+      ...generateStyles({ position: 'b-l', properties: ['bl'] }),
+      ...generateStyles({ position: 'b-r', properties: ['br'] }),
+      ...generateStyles({ position: 'l', properties: ['tl', 'bl'] }),
+      ...generateStyles({ position: 'r', properties: ['tr', 'br'] }),
     ])
   },
   {
@@ -69,5 +75,3 @@ const invRad = plugin(
     },
   }
 )
-
-export default invRad
