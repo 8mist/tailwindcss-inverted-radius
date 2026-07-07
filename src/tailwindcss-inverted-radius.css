@@ -1,0 +1,331 @@
+/**
+ * Tailwind CSS v4 utilities for inverted (concave) rounded corners.
+ *
+ * Forked from @butterfail/tailwindcss-inverted-radius by ggcls.
+ * @license MIT
+ */
+
+@utility inv-rad {
+  --inv-rad-tl-size: 0;
+  --inv-rad-tr-size: 0;
+  --inv-rad-bl-size: 0;
+  --inv-rad-br-size: 0;
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+}
+
+@utility inv-rad-* {
+  --inv-rad-tl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tl-size: --value(--spacing-*, [length]);
+  --inv-rad-tr-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tr-size: --value(--spacing-*, [length]);
+  --inv-rad-bl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-bl-size: --value(--spacing-*, [length]);
+  --inv-rad-br-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-br-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-t-* {
+  --inv-rad-tl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tl-size: --value(--spacing-*, [length]);
+  --inv-rad-tr-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tr-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-b-* {
+  --inv-rad-bl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-bl-size: --value(--spacing-*, [length]);
+  --inv-rad-br-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-br-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-l-* {
+  --inv-rad-tl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tl-size: --value(--spacing-*, [length]);
+  --inv-rad-bl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-bl-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-r-* {
+  --inv-rad-tr-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tr-size: --value(--spacing-*, [length]);
+  --inv-rad-br-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-br-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-t-l-* {
+  --inv-rad-tl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tl-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-t-r-* {
+  --inv-rad-tr-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-tr-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-b-l-* {
+  --inv-rad-bl-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-bl-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    );
+}
+
+@utility inv-rad-b-r-* {
+  --inv-rad-br-size: calc(--value(integer) * var(--spacing));
+  --inv-rad-br-size: --value(--spacing-*, [length]);
+  mask-clip: border-box, border-box, border-box, border-box;
+  mask-composite: add, add, add, add;
+  mask-mode: match-source, match-source, match-source, match-source;
+  mask-origin: border-box, border-box, border-box, border-box;
+  mask-position: left top, right top, left bottom, right bottom;
+  mask-repeat: no-repeat;
+  mask-size: 51% 51%;
+  mask-image:
+    radial-gradient(
+      var(--inv-rad-tl-size, 0) at left top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-tr-size, 0) at right top,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-bl-size, 0) at left bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgb(0, 0, 0)
+    ),
+    radial-gradient(
+      var(--inv-rad-br-size, 0) at right bottom,
+      rgba(0, 0, 0, 0) 98%,
+      rgb(0, 0, 0)
+    );
+}

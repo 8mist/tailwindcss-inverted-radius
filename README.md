@@ -1,37 +1,25 @@
-# @butterfail/tailwindcss-inverted-radius
+# tailwindcss-inverted-radius
 
-A plugin for Tailwind CSS v3.2+ that provides utilities to create inverted rounded corners for elements.
+Tailwind CSS v4 utilities for inverted (concave) rounded corners on elements.
+
+Forked from [@butterfail/tailwindcss-inverted-radius](https://github.com/ggcls/tailwindcss-inverted-radius) with a CSS-first v4 implementation.
 
 ## Installation
 
-Install the plugin from npm:
-
 ```sh
-npm install @butterfail/tailwindcss-inverted-radius
-```
-
-Then add the plugin to your `tailwind.config.js` file:
-
-```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    // ...
-  },
-  plugins: [
-    require('@butterfail/tailwindcss-inverted-radius'),
-    // ...
-  ],
-}
+npm install tailwindcss-inverted-radius
 ```
 
 ## Usage
 
-The plugin provides utility classes to create inverted rounded corners for elements.
+Import the package in your Tailwind CSS entry file:
 
-It generates classes for specifying the size of the rounded corners individually for each corner.
+```css
+@import 'tailwindcss';
+@import 'tailwindcss-inverted-radius';
+```
 
-Combine the `inv-rad` and `inv-rad-{n}` classes to specify the inverted radius for an element:
+Combine `inv-rad` with a size utility to apply inverted corners:
 
 ```html
 <div class="inv-rad inv-rad-4">
@@ -39,7 +27,7 @@ Combine the `inv-rad` and `inv-rad-{n}` classes to specify the inverted radius f
 </div>
 ```
 
-Use `inv-rad-0` to remove any inverted radius behavior:
+Use `inv-rad-0` to remove inverted radius at a breakpoint:
 
 ```html
 <div class="inv-rad inv-rad-4 lg:inv-rad-0">
@@ -47,57 +35,65 @@ Use `inv-rad-0` to remove any inverted radius behavior:
 </div>
 ```
 
-You can select the specific corner sizes by adding `inv-rad-{corner-position}-{n}`.
+### Corner-specific utilities
 
-The following position corner values:
-
-| Name           | Class              |
-| -------------- | ------------------ |
-| `top`          | `.inv-rad-t-{n}`   |
-| `right`        | `.inv-rad-r-{n}`   |
-| `bottom`       | `.inv-rad-b-{n}`   |
-| `left`         | `.inv-rad-l-{n}`   |
-| `top right`    | `.inv-rad-t-r-{n}` |
-| `top left`     | `.inv-rad-t-l-{n}` |
+| Position     | Class              |
+| ------------ | ------------------ |
+| `top`        | `.inv-rad-t-{n}`   |
+| `right`      | `.inv-rad-r-{n}`   |
+| `bottom`     | `.inv-rad-b-{n}`   |
+| `left`       | `.inv-rad-l-{n}`   |
+| `top right`  | `.inv-rad-t-r-{n}` |
+| `top left`   | `.inv-rad-t-l-{n}` |
 | `bottom right` | `.inv-rad-b-r-{n}` |
 | `bottom left`  | `.inv-rad-b-l-{n}` |
 
-## Compatibility
+Size values use your Tailwind spacing scale (`1`, `2`, `3`, `4`, `2.5`, `px`, etc.).
 
-The plugin utilizes CSS mask properties to create inverted rounded corners.
+### Pseudo-elements
 
-While this approach is widely supported, it's always a good practice to test for compatibility with your target browsers.
+Utilities work with variant prefixes such as `after:`:
 
-| CSS Property                                                   | Reference |
-| -------------------------------------------------------------- | --------- |
-| ["mask-image"](https://caniuse.com/?search=mask-image)         | CanIUse   |
-| ["mask-position"](https://caniuse.com/?search=mask-position)   | CanIUse   |
-| ["mask-mode"](https://caniuse.com/?search=mask-mode)           | CanIUse   |
-| ["mask-origin"](https://caniuse.com/?search=mask-origin)       | CanIUse   |
-| ["mask-clip"](https://caniuse.com/?search=mask-clip)           | CanIUse   |
-| ["mask-composite"](https://caniuse.com/?search=mask-composite) | CanIUse   |
-| ["mask-repeat"](https://caniuse.com/?search=mask-repeat)       | CanIUse   |
-| ["mask-size"](https://caniuse.com/?search=mask-size)           | CanIUse   |
+```html
+<div class="after:inv-rad after:inv-rad-t-r-3 after:absolute after:h-6 after:w-6"></div>
+```
 
 ## Configuration
 
-By default, we ship with the [tailwind's spacing](https://tailwindcss.com/docs/customizing-spacing) configuration.
+In v4, sizes resolve from the default spacing scale. Extend spacing in your CSS to add custom values:
 
-You can configure which values are available for this plugin under the `invRad` key in your `tailwind.config.js` file:
-
-```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      invRad: {
-        4.5: '1.125rem',
-      },
-    },
-  },
+```css
+@theme {
+  --spacing-4_5: 1.125rem;
 }
 ```
 
+Then use `inv-rad-4.5`, `inv-rad-t-r-4.5`, and so on.
+
+## Compatibility
+
+These utilities use CSS mask properties. Test against your target browsers.
+
+| CSS Property     | Reference |
+| ---------------- | --------- |
+| `mask-image`     | [Can I use](https://caniuse.com/?search=mask-image) |
+| `mask-position`  | [Can I use](https://caniuse.com/?search=mask-position) |
+| `mask-mode`      | [Can I use](https://caniuse.com/?search=mask-mode) |
+| `mask-origin`    | [Can I use](https://caniuse.com/?search=mask-origin) |
+| `mask-clip`      | [Can I use](https://caniuse.com/?search=mask-clip) |
+| `mask-composite` | [Can I use](https://caniuse.com/?search=mask-composite) |
+| `mask-repeat`    | [Can I use](https://caniuse.com/?search=mask-repeat) |
+| `mask-size`      | [Can I use](https://caniuse.com/?search=mask-size) |
+
+## Migrating from v3
+
+| v3 (`@butterfail/tailwindcss-inverted-radius`) | v4 (`tailwindcss-inverted-radius`) |
+| --- | --- |
+| `plugins: [require('...')]` in `tailwind.config.js` | `@import 'tailwindcss-inverted-radius'` in CSS |
+| `theme.extend.invRad` | `@theme { --spacing-*: ... }` |
+
+Class names are unchanged.
+
 ## License
 
-This plugin is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+MIT. See [LICENSE](./LICENSE).
