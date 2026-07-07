@@ -1,4 +1,19 @@
-node_modules
-dist
-yarn.lock
-package-lock.json
+# Build output
+dist/
+
+# Test output
+tests/output.css
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

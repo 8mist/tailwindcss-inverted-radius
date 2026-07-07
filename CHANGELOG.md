@@ -1,31 +1,19 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-- Nothing yet!
-
-## [0.1.1] - 2024-03-31
+## 1.0.0
 
 ### Added
 
-- Add tests to ensure the accuracy of the plugin output.
+- Tailwind CSS v4 support via CSS `@utility` directives
+- Functional utilities that resolve sizes from the Tailwind spacing scale
+- npm package exports for CSS `@import`
 
 ### Changed
 
-- Renamed variables for clarity and consistency
+- **Breaking:** Replaced the v3 JavaScript plugin API with a CSS-first package
+- Import with `@import 'tailwindcss-inverted-radius'` instead of `plugins: [...]`
+- Custom `invRad` theme key replaced by standard `--spacing-*` theme variables
 
-## [0.1.0] - 2024-03-30
+### Credits
 
-### Added
-
-- Add new `inv-rad` utility.
-- Add new `inv-rad-t`, `inv-rad-b`, ..., `inv-rad-l`, variants.
-
-[unreleased]: https://github.com/butterfail/tailwindcss-inverted-radius/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/butterfail/tailwindcss-inverted-radius/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/butterfail/tailwindcss-inverted-radius/releases/tag/v0.1.0
+Forked from [@butterfail/tailwindcss-inverted-radius](https://github.com/ggcls/tailwindcss-inverted-radius) by ggcls.

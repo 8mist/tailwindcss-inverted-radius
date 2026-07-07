@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import '../src/tailwindcss-inverted-radius.css';
+
+@source '../fixtures/**/*.html';
+@source inline('inv-rad');
+@source inline('inv-rad-4');
+@source inline('inv-rad-t-r-4');
+@source inline('inv-rad-b-l-4');
+@source inline('inv-rad-4.5');
+@source inline('inv-rad-t-r-4.5');
+
+@theme {
+  --spacing-4_5: 1.125rem;
+}
